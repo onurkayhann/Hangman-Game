@@ -1,14 +1,17 @@
 // Globala variabler
 
 const wordList = [
-  "Lemonad",
-  "Thaiboxning",
-  "Barcelona",
-  "Spanska",
-  "Fullstack",
+  "lemonad",
+  "thaiboxning",
+  "barcelona",
+  "spanska",
+  "fullstack",
 ];
 
-let selectedWord = []; // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+// Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+let selectedWord = [];
+
+let myUlEl = document.getElementById("myUl");
 
 let guesses = 0; // Number: håller antalet gissningar som gjorts
 let hangmanImg; // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
@@ -19,8 +22,14 @@ let msgHolderEl; // DOM-nod: Ger meddelande när spelet är över
 let startGameBtnEl = document.querySelector("#startGameBtn");
 startGameBtnEl.addEventListener("click", startGame);
 
-let letterButtonEls; // Array av DOM-noder: Knapparna för bokstäverna
-const letterBoxEls = document.querySelector("#letterBoxes > ul"); // Array av DOM-noder: Rutorna där bokstäverna ska stå
+// Array av DOM-noder: Knapparna för bokstäverna
+let letterButtonEls = document.querySelector("#letterButtons");
+letterButtonEls.addEventListener("click", handleButtons);
+
+let letterBoxEls = document.querySelector("#letterBoxes > ul"); // Array av DOM-noder: Rutorna där bokstäverna ska stå
+
+let letterCorrect = [];
+let letterIncorrect = [];
 
 // Funktion som startar spelet vid knapptryckning, och då tillkallas andra funktioner
 function startGame() {
@@ -32,16 +41,27 @@ function startGame() {
 function generateRandomWord() {
   selectedWord =
     wordList[Math.floor(Math.random() * wordList.length)].split("");
+  console.log(selectedWord);
 }
 
 // Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
 function createLetterBoxes() {
+  myUlEl.innerHTML = ""; // Här nollställer jag allt innanför ul.
   for (i = 0; i < selectedWord.length; i++) {
     const li = document.createElement("LI");
     const input = document.createElement("INPUT");
 
     li.appendChild(input);
-    document.getElementById("myUl").appendChild(li);
+    myUlEl.appendChild(li);
+  }
+}
+
+// console.log(event.target.innerHTML) gör så att knappen man trycker på loggas på console.
+function handleButtons(event) {
+  if (selectedWord.includes(event.target.innerHTML)) {
+    letterCorrect.push(event.target.innerHTML);
+  } else {
+    letterIncorrect.push(event.target.innerHTML);
   }
 }
 

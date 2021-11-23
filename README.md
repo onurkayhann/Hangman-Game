@@ -45,26 +45,27 @@ wordList[Math.floor(Math.random() * wordList.length)];
 
 Det du måste göra nu är att på egen hand få rätt på följande funktionalitet:
 
-- Lyssna på klick på alla bokstavsknappar
-- Skriv en callback som hanterar när spelaren trycker på alla bokstavsknappar
+<!-- - Lyssna på klick på alla bokstavsknappar -->
+<!-- - Skriv en callback som hanterar när spelaren trycker på alla bokstavsknappar -->
 
-  - I den callbacken behöver det ske lite saker:
+- I den callbacken behöver det ske lite saker:
 
-    1. Kolla värdet på bokstavsknappen som spelaren tryckte på och jämför det med alla bokstäverna i `selectedWord`. _Observera att bokstäver ska kunna förekomma flera gånger_.
-    2. _Nedan beskrivs förslag på beslutskedjan_:
-       - Om bokstaven finns och användaren inte har gissat alla bokstäverna rätt:
-         1. Deaktivera bokstavsknappen som spelaren tryckte på
-         2. Leta upp i vilken position (index) i ordet som bokstaven förekommer
-         3. Sätt attributet `value` på elementet i indexet som motsvarar positionen från steg 2 inuti i arrayen `letterBoxEls[positionOfGuessedLetter].value = ...`
+  <!-- 1. Kolla värdet på bokstavsknappen som spelaren tryckte på och jämför det med alla bokstäverna i `selectedWord`. _Observera att bokstäver ska kunna förekomma flera gånger_. -->
 
-    - Om bokstaven finns och användaren har gissat _alla_ bokstäverna rätt:
-      - Visa meddleande i `msgHolderEl` om att användaren har vunnit och låt dem börja om spelet (här får man _inte_ använda `location.reload()` utan det ska gå att programmatiskt starta om spelet igen)
+  2. _Nedan beskrivs förslag på beslutskedjan_:
+     - Om bokstaven finns och användaren inte har gissat alla bokstäverna rätt:
+       1. Deaktivera bokstavsknappen som spelaren tryckte på
+       2. Leta upp i vilken position (index) i ordet som bokstaven förekommer
+       3. Sätt attributet `value` på elementet i indexet som motsvarar positionen från steg 2 inuti i arrayen `letterBoxEls[positionOfGuessedLetter].value = ...`
 
-    b) Om bokstaven inte finns och användaren inte har gissat 6 gånger: 1. Inkrementera `guesses` 2. Sätt `hangmanImg` till att vara en sträng som består av:
-    `images/h{guesses}.png` 3. Använd `document.querySelector` för att hitta `<img>`-taggen och sätt dess `src` egenskap att vara lika med `hangmanImg`.
+  - Om bokstaven finns och användaren har gissat _alla_ bokstäverna rätt:
+    - Visa meddleande i `msgHolderEl` om att användaren har vunnit och låt dem börja om spelet (här får man _inte_ använda `location.reload()` utan det ska gå att programmatiskt starta om spelet igen)
 
-    - Om bokstaven _inte_ finns och användaren har gissat 6 gånger:
-      - Sätt `msgHolderEl` visa meddelande om att användaren har förlorat och låt dem börja om spelet (här får man _inte_ använda `location.reload()` utan det ska gå att programmatiskt starta om spelet igen)
+  b) Om bokstaven inte finns och användaren inte har gissat 6 gånger: 1. Inkrementera `guesses` 2. Sätt `hangmanImg` till att vara en sträng som består av:
+  `images/h{guesses}.png` 3. Använd `document.querySelector` för att hitta `<img>`-taggen och sätt dess `src` egenskap att vara lika med `hangmanImg`.
+
+  - Om bokstaven _inte_ finns och användaren har gissat 6 gånger:
+    - Sätt `msgHolderEl` visa meddelande om att användaren har förlorat och låt dem börja om spelet (här får man _inte_ använda `location.reload()` utan det ska gå att programmatiskt starta om spelet igen)
 
 ---
 
