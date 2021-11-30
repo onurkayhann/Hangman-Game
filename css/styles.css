@@ -1,0 +1,291 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #f1c40f;
+  background-color: #2980b9;
+  font-family: sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+header {
+  background-color: #2980b9;
+  color: #f1c40f;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 4.5em;
+  text-align: center;
+}
+
+main {
+  flex: 1;
+  padding: 1.5em;
+}
+
+main:after {
+  content: "\00a0"; /* &nbsp; */
+  display: block;
+  margin-top: var(--space);
+  height: 0px;
+  visibility: hidden;
+}
+
+main > article {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+main > article > button {
+  align-content: center;
+  justify-content: center;
+}
+
+main > article > h2 {
+  text-align: center;
+  color: #f1c40f;
+  margin-bottom: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+footer {
+  background-color: #000080;
+  border: 2px solid #f1c40f;
+  margin-top: 20px;
+  padding-top: 30px;
+  color: #fff;
+  font-size: 1.6rem;
+  width: 100%;
+  height: 15vh;
+  flex: none;
+  text-align: center;
+}
+
+#startGameBtn {
+  font-size: 1.5em;
+  background-color: #000080;
+}
+
+#gameBoard {
+  padding: 10px 0;
+}
+
+#letterButtons {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#letterButtons button:not(last-child) {
+  margin: 4px 4px;
+  cursor: pointer;
+  max-width: 84px;
+  min-width: 84px;
+}
+
+#letterBoxes li {
+  display: inline-flex;
+}
+
+#letterBoxes input {
+  border: 1px solid #ffff00;
+  color: #ffff00;
+  background-color: darkblue;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 2em;
+  margin-top: 1em;
+  padding: 20px 5px;
+  text-align: center;
+  width: 2em;
+}
+
+#message {
+  padding-top: 20px;
+  font-size: 1.5em;
+}
+
+.btn {
+  -moz-user-select: text;
+  background-color: inherit;
+  background: #0000ff;
+  border-radius: 6px;
+  border: 0;
+  border: 2px solid #ffff00;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  line-height: normal;
+  margin-bottom: 16px;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  padding: 16px 36px 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+.btn--stripe {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn--stripe:after {
+  content: "";
+  display: block;
+  height: 7px;
+  width: 100%;
+  background-image: -webkit-repeating-linear-gradient(
+    45deg,
+    #666,
+    #666 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  background-image: repeating-linear-gradient(
+    45deg,
+    #666,
+    #666 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-top: 1px solid #666;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-size: 7px 7px;
+}
+
+.btn--stripe:disabled {
+  background-color: #8b8000;
+  color: #fff;
+  border-color: cfcf05;
+}
+
+.btn--stripe:hover {
+  background-color: #f1c40f;
+  color: #fff;
+  border-color: #cfcf05;
+}
+
+.btn--stripe:disabled:after,
+.btn--stripe:hover:after {
+  background-image: -webkit-repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  background-image: repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  border-top: 1px solid #000;
+}
+
+@media screen and (max-width: 192rem) {
+  p {
+    font-size: 2.5rem;
+  }
+  article {
+    font-size: 2rem;
+  }
+  section {
+    justify-content: space-between;
+    font-size: 1.8rem;
+  }
+
+  #letterButtons {
+    display: inline-flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+  }
+
+  #letterBoxes {
+    font-size: 3rem;
+  }
+
+  .container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #hangman {
+    font-size: 4rem;
+    margin-top: 3rem;
+  }
+
+  #message {
+    display: flex;
+    flex-direction: start;
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
+
+  footer {
+    font-size: 3.5rem;
+    height: 15vh;
+  }
+}
+
+@media screen and (max-width: 41.4rem) {
+  body {
+    font-size: 1.6rem;
+  }
+
+  #letterBoxes {
+    font-size: 3rem;
+  }
+
+  footer {
+    font-size: 2rem;
+    height: 10vh;
+  }
+}
